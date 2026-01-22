@@ -59,5 +59,14 @@ app.delete('/api/products/:id', async (req, res) => {
     await productsCollection.deleteOne({ _id: new ObjectId(req.params.id) });
     res.json({ message: "Product deleted" });
 });
-
+// GET /version — Новое изменение для Task 12
+app.get('/version', (req, res) => {
+    res.json({
+        version: "1.1",
+        updatedAt: "2026-01-22" // Поставь текущую дату
+    });
+});
+app.get('/', (req, res) => {
+    res.json({ message: "Backend API is running (Version 1.1 updated)" });
+});
 app.listen(PORT, () => console.log(`🚀 Server listening on port ${PORT}`));
